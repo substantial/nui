@@ -98,7 +98,7 @@ To see all of the available properties and values, see the Style Classes and Sty
 
 ### Creating Custom Style Classes
 
-You can give elements custom style classes (e.g. `LargeButton`), and make those classes inherit from one or more other style classes by using the form `Button:LargeButton`. To bypass NUI's styling for a particular element, set the class to `none`. You can set an element's style class either in Interface Builder or programmatically: 
+You can give elements custom style classes (e.g. `LargeButton`), and make those classes inherit from one or more other style classes by using the form `Button:LargeButton`. To bypass NUI's styling for a particular element, set the class to `none`. You can set an element's style class either in Interface Builder or programmatically:
 
 #### Setting an Element's Style Class in Interface Builder
 
@@ -307,6 +307,7 @@ Below are all of the currently available style classes, their corresponding UI c
 * font-name *(FontName)*
 * font-size *(Number)*
 * height *(Number)*
+* line-height *(Number)*
 * shadow-color *(Color)*
 * shadow-offset *(Offset)*
 * shadow-opacity *(Number)*
