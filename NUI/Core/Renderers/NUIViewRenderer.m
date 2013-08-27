@@ -38,6 +38,43 @@
     if ([NUISettings hasProperty:@"corner-radius" withClass:className]) {
         [layer setCornerRadius:[NUISettings getFloat:@"corner-radius" withClass:className]];
     }
+    
+    if ([NUISettings hasProperty:@"border-top-color" withClass:className]
+        && [NUISettings hasProperty:@"border-top-width" withClass:className]) {
+        CGFloat width = [NUISettings getFloat:@"border-top-width" withClass:className];
+        CGRect frame = CGRectMake(0.0f, 0.0f, view.frame.size.width, width);
+        [NUIViewRenderer drawBorderWithFrame:frame colorClass:@"border-top-color" view:view className:className];        
+    };
+
+    if ([NUISettings hasProperty:@"border-left-color" withClass:className]
+        && [NUISettings hasProperty:@"border-left-width" withClass:className]) {
+        CGFloat width = [NUISettings getFloat:@"border-left-width" withClass:className];
+        CGRect frame = CGRectMake(0.0f, 0.0f, width, view.frame.size.height);
+        [NUIViewRenderer drawBorderWithFrame:frame colorClass:@"border-left-color" view:view className:className];
+    };
+    
+    if ([NUISettings hasProperty:@"border-bottom-color" withClass:className]
+        && [NUISettings hasProperty:@"border-bottom-width" withClass:className]) {
+        CGFloat width = [NUISettings getFloat:@"border-bottom-width" withClass:className];
+        CGRect frame = CGRectMake(0.0f, view.frame.size.height - width, view.frame.size.width, width);
+        [NUIViewRenderer drawBorderWithFrame:frame colorClass:@"border-bottom-color" view:view className:className];
+    };
+
+    if ([NUISettings hasProperty:@"border-right-color" withClass:className]
+        && [NUISettings hasProperty:@"border-right-width" withClass:className]) {
+        CGFloat width = [NUISettings getFloat:@"border-right-width" withClass:className];
+        CGRect frame = CGRectMake(view.frame.size.width - width, 0.0f, width, view.frame.size.height);
+        [NUIViewRenderer drawBorderWithFrame:frame colorClass:@"border-right-color" view:view className:className];
+    };
+}
+
++ (void)drawBorderWithFrame:(CGRect)frame colorClass:(NSString *)colorClass view:(UIView *)view className:(NSString *)className
+{
+    CALayer *border = [CALayer layer];
+    border.frame = frame;
+    border.backgroundColor = [NUISettings getColor:colorClass withClass:className].CGColor;
+    
+    [view.layer addSublayer:border];
 }
 
 + (void)renderShadow:(UIView*)view withClass:(NSString*)className
