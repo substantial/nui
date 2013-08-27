@@ -353,6 +353,7 @@ static NUIRenderer *instance = nil;
                                    [UITabBarItem class], @"renderTabBarItem",
                                    [UITableViewCell class], @"renderTableViewCell",
                                    [UIToolbar class], @"renderToolbar",
+                                   [UITextView class], @"renderTextView",
                                    [UITextField class], @"renderTextField",
                                    [UIButton class], @"renderButton",
                                    [UILabel class], @"renderLabel",
