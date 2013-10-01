@@ -38,6 +38,11 @@
     [self swizzle:[UITextField class] methodName:@"textRectForBounds:"];
     [self swizzle:[UITextField class] methodName:@"editingRectForBounds:"];
     [self swizzle:[UIWindow class] methodName:@"becomeKeyWindow"];
+    
+    [self swizzleDealloc:[UINavigationBar class]];
+    [self swizzleDealloc:[UITabBar class]];
+    [self swizzleDealloc:[UITableView class]];
+    [self swizzleDealloc:[UITableViewCell class]];    
 }
 
 - (void)swizzleAwakeFromNib:(Class)class

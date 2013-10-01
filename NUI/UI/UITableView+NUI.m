@@ -27,6 +27,11 @@
     self.nuiIsApplied = [NSNumber numberWithBool:YES];
 }
 
+- (void)override_dealloc {
+    [NUIRenderer removeOrientationDidChangeObserver:self];
+    [self override_dealloc];
+}
+
 - (void)orientationDidChange:(NSNotification*)notification
 {
     [NUIRenderer performSelector:@selector(sizeDidChangeForTableView:) withObject:self afterDelay:0];
